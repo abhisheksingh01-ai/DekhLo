@@ -1,8 +1,9 @@
+import Navbar from "./components/navbar/Navbar";
+
 export default function App() {
   return (
     <>
-      <div>Abhishek Code</div>
-      <div>Ishwar Code</div>
+      <Navbar/>
     </>
   )
 }
