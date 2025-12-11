@@ -13,10 +13,16 @@ const Navbar = () => {
       <div className="navbar-container">
         <Logo close={close} />
         <NavList isOpen={isOpen} close={close} />
-        <div className="nav-cta"><a href="#contact" className="btn-primary">Contact</a></div>
+        
+        {/* Desktop Button */}
+        <div className="nav-cta">
+          <a href="#contact" className="btn-primary">Contact</a>
+        </div>
+        
         <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
       </div>
     </nav>
   );
 };
+
 export default Navbar;

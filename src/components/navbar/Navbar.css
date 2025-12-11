@@ -1,179 +1,105 @@
-/* Import Fonts based on analysis */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap');
 
 :root {
-  /* Color Palette  */
   --primary-teal: #4EE3D9;
   --bg-dark-cyan: #0A3D4F;
-  --bg-dark-gradient: linear-gradient(90deg, #0A3D4F 0%, #3E2CA8 100%);
   --text-white: #FFFFFF;
   --text-gray: #7C8A96;
   --neon-glow: 0 0 12px rgba(95, 251, 255, 0.6);
-  
-  /* Typography [cite: 68] */
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .navbar {
-  background: var(--bg-dark-cyan); 
+  background: var(--bg-dark-cyan);
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-heading);
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
   width: 100%;
   max-width: 1200px;
   padding: 0 24px;
 }
 
-/* Logo Styling */
+/* Logo */
 .navbar-logo {
   color: var(--text-white);
+  font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 800;
   text-decoration: none;
   letter-spacing: -1px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
 }
+.text-teal { color: var(--primary-teal); text-shadow: var(--neon-glow); }
 
-.text-teal {
-  color: var(--primary-teal);
-  text-shadow: var(--neon-glow); 
-}
-
-/* Navigation Menu */
-.nav-menu {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 32px;
-}
-
+/* Menu */
+.nav-menu { display: flex; list-style: none; gap: 32px; align-items: center; }
 .nav-link {
-  color: var(--text-gray); 
+  color: var(--text-gray);
   font-family: var(--font-body);
   font-weight: 500;
   text-decoration: none;
-  font-size: 16px;
   transition: all 0.3s ease;
 }
+.nav-link:hover { color: var(--primary-teal); text-shadow: 0px 0px 8px rgba(78, 227, 217, 0.4); }
 
-.nav-link:hover {
-  color: var(--primary-teal);
-  text-shadow: 0px 0px 8px rgba(78, 227, 217, 0.4);
-}
-
-/* Button Component [cite: 139] */
+/* Buttons */
 .btn-primary {
   background: linear-gradient(135deg, #4EE3D9 0%, #3ABCB5 100%);
   color: var(--text-white);
   padding: 12px 24px;
-  border-radius: 12px; 
+  border-radius: 12px;
   text-decoration: none;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  box-shadow: 0px 6px 18px rgba(78, 227, 217, 0.35); 
   border: none;
   cursor: pointer;
-  white-space: nowrap;
+  transition: all 0.3s ease;
 }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0px 8px 22px rgba(95, 251, 255, 0.5); }
+.nav-cta { display: block; }
+.mobile-cta { display: none; }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 8px 22px rgba(95, 251, 255, 0.5);
-}
-
-.nav-cta {
-  display: block;
-}
-
-.mobile-cta {
-  display: none;
-}
-
-/* Mobile Menu Icon */
+/* Mobile Icon */
 .menu-icon {
   display: none;
+  background: none;
+  border: none;
   cursor: pointer;
   flex-direction: column;
   gap: 5px;
 }
+.bar { width: 25px; height: 3px; background-color: var(--text-white); border-radius: 2px; transition: all 0.3s ease; }
 
-.bar {
-  width: 25px;
-  height: 3px;
-  background-color: var(--text-white);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media screen and (max-width: 960px) {
   .nav-menu {
-    display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 100vh; /* Changed from 90vh to cover screen */
     position: absolute;
     top: 80px;
     left: -100%;
-    opacity: 0;
-    transition: all 0.5s ease;
     background: var(--bg-dark-cyan);
     padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
   }
-
-  .nav-menu.active {
-    left: 0;
-    opacity: 1;
-    z-index: 998;
-  }
-
-  .nav-cta {
-    display: none; 
-  }
-
-  .mobile-cta {
-    display: block; 
-    margin-top: 20px;
-  }
-
-  .menu-icon {
-    display: flex;
-  }
-
-  /* Hamburger Animation */
-  .bar.open:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-    background-color: var(--primary-teal);
-  }
-  .bar.open:nth-child(2) {
-    opacity: 0;
-  }
-  .bar.open:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
-    background-color: var(--primary-teal);
-  }
+  .nav-menu.active { left: 0; }
+  .nav-cta { display: none; }
+  .mobile-cta { display: block; margin-top: 20px; }
+  .menu-icon { display: flex; }
+  
+  .bar.open:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); background-color: var(--primary-teal); }
+  .bar.open:nth-child(2) { opacity: 0; }
+  .bar.open:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); background-color: var(--primary-teal); }
 }
